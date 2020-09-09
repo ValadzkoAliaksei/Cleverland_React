@@ -52,15 +52,15 @@ class App extends React.Component {
     }))
   }
 
-  onAdd = (productItem, numberItem) => {
+  onAdd = () => {
     let newProduct = {
-      number: numberItem,
-      product: productItem,
-
+      checkBox: this.state.products[0].checkBox,
+      product: this.state.products[0].product,
+      number: this.state.products[0].number,
     } 
     this.setState({
-      products: this.state.products.push(newProduct)
-    })
+      products: [ ...this.state.products, newProduct
+    ]})
   }
   render() {
     return (
@@ -97,7 +97,7 @@ class App extends React.Component {
         <Button
           variant="contained"
           color="primary"
-          onClick={ () => this.onAdd(this.state.products[0].product, this.state.products[0].number) }
+          onClick={ this.onAdd }
           >
             Добавить
         </Button>
