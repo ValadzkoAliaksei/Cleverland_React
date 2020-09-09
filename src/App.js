@@ -1,26 +1,26 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import './App.css';
-import Lists from './Lists';
+import List from './List';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [
-        {checkBox:'', product: 'Наименование', number: 1,}
-      ]
-    }
+      products: [],
+      newProduct: {checkBox: false, product: 'Наименование', number: 1,}
+    } 
+    this.lists = this.state.products.map(
+        prod => <List checked={prod.checkBox} product={prod.product} number={prod.number}/>
+      )
+    
   }
   onMinusClick = () => {
     this.setState(prevState => ({
       ...prevState,
-      products: {
-        ...prevState.products,
-        0: {
-          ...prevState.products[0],
-          number: prevState.products[0].number - 1
-        }
+      newProduct: {
+        ...prevState.newProduct,
+        number: prevState.newProduct.number - 1
       }
     }))
   }
@@ -28,12 +28,9 @@ class App extends React.Component {
   onPlusClick = () => {
     this.setState(prevState => ({
       ...prevState,
-      products: {
-        ...prevState.products,
-        0: {
-          ...prevState.products[0],
-          number: prevState.products[0].number + 1
-        }
+      newProduct: {
+        ...prevState.newProduct,
+        number: prevState.newProduct.number + 1
       }
     }))
   }
@@ -42,24 +39,16 @@ class App extends React.Component {
     let productChange = event.target.value;
     this.setState(prevState => ({
       ...prevState,
-      products: {
-        ...prevState.products,
-        0: {
-          ...prevState.products[0],
-          product: productChange,
-        }
+      newProduct: {
+        ...prevState.newProduct,
+        product: productChange,
       }
     }))
   }
 
-  onAdd = () => {
-    let newProduct = {
-      checkBox: this.state.products[0].checkBox,
-      product: this.state.products[0].product,
-      number: this.state.products[0].number,
-    } 
+  onAdd = () => { 
     this.setState({
-      products: [ ...this.state.products, newProduct
+      products: [ ...this.state.products, this.state.newProduct
     ]})
   }
   render() {
@@ -67,7 +56,7 @@ class App extends React.Component {
       <div className="App">
         <input
           type='text'
-          value={this.state.products[0].product}
+          value={this.state.newProduct.product}
           onChange={ this.onChange }   
           >
         </input>
@@ -81,7 +70,7 @@ class App extends React.Component {
         </Button>
         <input
           type='text'
-          value={this.state.products[0].number}
+          value={this.state.newProduct.number}
           >
         </input>
         <Button
@@ -102,7 +91,7 @@ class App extends React.Component {
             Добавить
         </Button>
         <br></br>
-        <Lists products={this.state.products}/>
+        {this.lists}
       </div>
     );
   }
