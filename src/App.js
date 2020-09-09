@@ -9,9 +9,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: [],
       products: [
-        {product: 'Наименование', number: 1,}
+        {checkBox:'', product: 'Наименование', number: 1,}
       ]
     }
   }
@@ -105,7 +104,7 @@ class App extends React.Component {
             Добавить
         </Button>
         <br></br>
-        <Lists product={this.state.products[0].product} number={this.state.products[0].number}/>
+        <Lists products={this.state.products}/>
       </div>
     );
   }

@@ -7,12 +7,13 @@ class Lists extends React.Component {
  
 
   render(props) {
-    return (
-      <div className="List">
-        {this.props.product} | {this.props.number}
-      </div>
-    );
+    for (let key in this.props.products) {
+      return (
+        <div className="List">
+          {this.props.products[key].product} | {this.props.products[key].number}
+        </div>
+      );
+    }
   }
 }
-
 export default Lists;
