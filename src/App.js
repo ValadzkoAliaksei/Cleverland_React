@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
 import './App.css';
 import List from './List';
 
@@ -8,58 +9,49 @@ class App extends React.Component {
     super(props);
     this.state = {
       products: [],
-      newProduct: {checkBox: false, product: 'Наименование', number: 1,}
-    } 
-    this.lists = this.state.products.map(
-        prod => <List checked={prod.checkBox} product={prod.product} number={prod.number}/>
-      )
-    
+      product: '',
+      number: 1,
+    }
   }
   onMinusClick = () => {
     this.setState(prevState => ({
-      ...prevState,
-      newProduct: {
-        ...prevState.newProduct,
-        number: prevState.newProduct.number - 1
-      }
+       number: prevState.number - 1
     }))
   }
   
   onPlusClick = () => {
     this.setState(prevState => ({
-      ...prevState,
-      newProduct: {
-        ...prevState.newProduct,
-        number: prevState.newProduct.number + 1
-      }
+        number: prevState.number + 1
     }))
   }
 
   onChange = (event) => {
     let productChange = event.target.value;
-    this.setState(prevState => ({
-      ...prevState,
-      newProduct: {
-        ...prevState.newProduct,
+    this.setState({ 
         product: productChange,
-      }
-    }))
+    })
   }
 
   onAdd = () => { 
-    this.setState({
-      products: [ ...this.state.products, this.state.newProduct
-    ]})
+    this.setState(prevState => ({
+      products: [ ...prevState.products, {
+          product: prevState.product,
+         number: prevState.number
+     }],
+      product: '',
+      number: 1 
+   }))
   }
   render() {
     return (
       <div className="App">
-        <input
+        <Input
           type='text'
-          value={this.state.newProduct.product}
-          onChange={ this.onChange }   
+          value={this.state.product}
+          onChange={ this.onChange }
+          placeholder='Наименование'   
           >
-        </input>
+        </Input>
         <Button
           variant="contained"
           color="secondary"
@@ -68,11 +60,12 @@ class App extends React.Component {
           >
             -
         </Button>
-        <input
+        <Input
           type='text'
-          value={this.state.newProduct.number}
+          value={this.state.number}
+          placeholder='1'
           >
-        </input>
+        </Input>
         <Button
           variant="contained"
           color="secondary"
@@ -91,8 +84,7 @@ class App extends React.Component {
             Добавить
         </Button>
         <br></br>
-        {this.lists}
-      </div>
+        { this.state.products.map(item => (<List product={item.product} number={item.number} />)) }      </div>
     );
   }
 }
