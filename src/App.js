@@ -3,8 +3,6 @@ import Button from '@material-ui/core/Button';
 import './App.css';
 import Lists from './Lists';
 
-
-
 class App extends React.Component {
   constructor(props) {
     super(props);
