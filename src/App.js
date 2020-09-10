@@ -45,38 +45,44 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Input
-          type='text'
-          value={this.state.product}
-          onChange={ this.onChange }
-          placeholder='Наименование'   
-          >
-        </Input>
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={ this.onMinusClick }
+        <div className="AppBlock">
+          <Input
+            type='text'
+            value={this.state.product}
+            onChange={ this.onChange }
+            placeholder='Наименование'   
+            >
+          </Input>
+          <Button
+            className='MinusButton'
+            variant="contained"
+            color="secondary"
+            onClick={ this.onMinusClick }
 
-          >
-            -
-        </Button>
-        <Input
-          type='text'
-          value={this.state.number}
-          placeholder='1'
-          >
-        </Input>
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={ this.onPlusClick }
-          >
-            +
-        </Button>
-        <div>
+            >
+              -
+          </Button>
+          <Input
+            className='NumberInput'
+            type='text'
+            value={this.state.number}
+            placeholder='1'
+            >
+          </Input>
+          <Button
+            className='PlusButton'
+            variant="contained"
+            color="secondary"
+            onClick={ this.onPlusClick }
+            >
+              +
+          </Button>
+        </div>
+        <div className='TextBlock'>
           Введите наименование продукта и количество
         </div>
         <Button
+          className='AddButton'
           variant="contained"
           color="primary"
           onClick={ this.onAdd }

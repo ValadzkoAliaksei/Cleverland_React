@@ -20,6 +20,7 @@ class List extends React.Component {
       return (
         <div className="List">
           <FormControlLabel
+            className = "ProductLabel"
             control={
             <Checkbox
               checked={this.state.checked}

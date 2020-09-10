@@ -1,3 +1,31 @@
 .App {
-  text-align: center;
-}
+  width: 600px;
+ }
+
+.AppBlock {
+  display: flex;
+  justify-content: space-between;
+ }
+
+.NumberInput {
+   width: 40px;
+ }
+
+.TextBlock {
+   padding: 8px;
+   color: gray;
+   font-size: 10px;
+ }
+
+button.PlusButton,
+button.MinusButton {
+    border-radius: 32px;
+    width: 64px;
+    height: 64px;
+    font-size: 40px;
+  }
+
+  button.AddButton {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
