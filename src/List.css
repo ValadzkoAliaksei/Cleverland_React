@@ -1,9 +1,3 @@
 .List {
   margin-top: 20px;
-
-}
-label.ProductLabel {
-  width: 300px;
-  display: flex;
-  justify-content: space-between;
 }

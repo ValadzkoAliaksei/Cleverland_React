@@ -8,12 +8,12 @@ class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     checked: '',
+     checked: false,
     }
   }
 
   handleChange = (event) => {
-    this.setState({ ...this.state, [event.target.name]: event.target.checked });
+    this.setState({ checked: event.target.checked });
   };
 
   render(props) {
@@ -26,7 +26,7 @@ class List extends React.Component {
               checked={this.state.checked}
               onChange={this.handleChange}
               name="checked" />}
-            label={this.props.product + ` | ` + this.props.number}
+            label = {`${this.props.product} ${(this.props.number != 1) ? ("| " + this.props.number) : ""}`}
           />
         </div>
       );
