@@ -6,37 +6,31 @@ import './Counter.css';
 
 class Counter extends React.Component {
 
-  onPlusClick = () => {
-    this.props.onPlusClick()
-  }
-
-
-  onMinusClick = () => {
-    this.props.onMinusClick()
-  }
-
   render(props) {
     return (
       <div className="Counter">
         <Fab
+          className="CounterButton"
           size="medium"
           color="secondary"
-          aria-label="add"
-          onClick={this.onMinusClick}
+          aria-label="remove"
+          onClick={this.props.onMinusClick}
           >
           <RemoveIcon /> 
         </Fab>
         <TextField
+          className="CounterInput"
           id="standard-helperText"
           defaultValue="1"
           variant="outlined"
           value={this.props.number}
         />
         <Fab
+          className="CounterButton"
           size="medium"
           color="secondary"
           aria-label="add"
-          onClick={this.onPlusClick}
+          onClick={ this.props.onPlusClick}
         >
           <AddIcon />
         </Fab>

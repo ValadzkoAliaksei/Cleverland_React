@@ -9,6 +9,7 @@ class Form extends React.Component {
     this.state = {
       product: '',
       number: 1,
+      id: 0,
     }
   }
 
@@ -33,11 +34,12 @@ class Form extends React.Component {
   }
   
   onAdd = () => {
-    this.props.onAdd(this.state.product, this.state.number)
-    this.setState({
+    this.props.onAdd(this.state.product, this.state.number, this.state.id)
+    this.setState(prevState => ({
       product: '',
       number: 1,
-    })
+      id: prevState.id + 1,
+    }))
   }
 
   render() {

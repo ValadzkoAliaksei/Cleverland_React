@@ -1,7 +1,7 @@
 import React from 'react';
 import './List.css';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import { FormControlLabel, Checkbox, IconButton } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 class List extends React.Component {
@@ -16,6 +16,10 @@ class List extends React.Component {
     this.setState({ checked: event.target.checked });
   };
 
+  onDelete = () => {
+    this.props.onDelete(this.props.products.id)
+  };
+
   render(props) {
       return (
         <div className="List">
@@ -26,8 +30,11 @@ class List extends React.Component {
               checked={this.state.checked}
               onChange={this.handleChange}
               name="checked" />}
-            label = {`${this.props.product} ${(this.props.number != 1) ? ("| " + this.props.number) : ""}`}
+            label = {`${this.props.products.product} ${(this.props.products.number !== 1) ? ("| " + this.props.products.number) : ""}`}
           />
+          <IconButton aria-label="delete" onClick={this.onDelete}>
+            <DeleteIcon />
+          </IconButton>
         </div>
       );
     }

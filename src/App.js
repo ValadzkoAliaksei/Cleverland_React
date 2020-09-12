@@ -11,14 +11,23 @@ class App extends React.Component {
     }
   }
 
-  onAdd = (item, number) => { 
+  onAdd = (item, number, id) => { 
     this.setState(prevState => ({
       products: [ ...prevState.products, {
         product: item,
-        number: number
+        number: number,
+        id: id,
      }],
    }))
   }
+
+  onDelete = (id) => {
+    let productsChange = this.state.products.filter(item => item.id !== id);
+    this.setState ({
+      products: productsChange,
+    })
+  }
+
 
   render() {
     return (
@@ -27,7 +36,7 @@ class App extends React.Component {
           <Form  onAdd={this.onAdd}/>
         </div>
         <div className= "ListBlock">
-          { this.state.products.map(item => (<List product={item.product} number={item.number} />)) }
+          { this.state.products.map(item => (<List products={item} onDelete={this.onDelete}/>)) }
         </div>
       </div>
     );

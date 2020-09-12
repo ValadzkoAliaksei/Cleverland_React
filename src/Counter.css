@@ -1,0 +1,7 @@
+button.CounterButton {
+    margin: 0 10px;
+}
+div.CounterInput input{
+    width: 40px;
+    text-align: center;
+}
