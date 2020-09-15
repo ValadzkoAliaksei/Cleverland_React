@@ -1,0 +1,7 @@
+.FormBlock {
+  display: flex;
+  justify-content: space-between;
+ }
+ button.AddButton {
+  margin-top: 20px;
+ }

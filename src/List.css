@@ -1,4 +1,8 @@
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
+.List {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+label.ProductLabel span:last-of-type{
+  padding-left: 30px;
 }
