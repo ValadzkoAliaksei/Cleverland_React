@@ -1,44 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './List.css';
 import { FormControlLabel, Checkbox, IconButton } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+const List = (props) => {
+  const [check, setCheck] = useState(false);
 
-class List extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-     checked: false,
-    }
-  }
-
-  handleChange = (event) => {
-    this.setState({ checked: event.target.checked });
-  };
-
-  onDelete = () => {
-    this.props.onDelete(this.props.products.id)
-  };
-
-  render(props) {
-      return (
-        <div className="List">
-          <FormControlLabel
-            className = "ProductLabel"
-            control={
-            <Checkbox
-              checked={this.state.checked}
-              onChange={this.handleChange}
-              name="checked" />}
-            label = {`${this.props.products.product} ${(this.props.products.number !== 1) ? ("| " + this.props.products.number) : ""}`}
-          />
-          <IconButton aria-label="delete" onClick={this.onDelete}>
-            <DeleteIcon />
-          </IconButton>
-        </div>
-      );
-    }
-  }
+  return (
+    <div className="List">
+      <FormControlLabel
+        className="ProductLabel"
+        control={
+          <Checkbox
+            checked={check}
+            onChange={(event) => setCheck(event.target.checked)}
+            name="checked" />}
+        label={`${props.products.product} ${(props.products.number !== 1) ? ("| " + props.products.number) : ""}`}
+      />
+      <IconButton aria-label="delete" onClick={() => {props.onDelete(props.products.id)
+  }}>
+        <DeleteIcon />
+      </IconButton>
+    </div>
+  );
+};
 
 
 export default List;
