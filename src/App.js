@@ -19,6 +19,7 @@ const App = () => {
   };
 
   const onMinusClick = () => {
+    (number > 1) &&
     setNumber(number - 1);
   };
 
