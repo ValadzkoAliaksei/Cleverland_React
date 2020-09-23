@@ -9,42 +9,22 @@ const App = () => {
   const [id, setId] = useState(0);
   const [products, setProducts] = useState([]);
 
-  const onChange = (event) => {
-    const productChange = event.target.value;
-    setProduct (productChange);
-  };
+  const onChange = (event) => setProduct (event.target.value);
 
-  const onPlusClick = () => {
-    setNumber(number + 1);
-  };
+  const onPlusClick = () => setNumber(number + 1);
 
-  const onMinusClick = () => {
-    (number > 1) &&
-    setNumber(number - 1);
-  };
+  const onMinusClick = () => (number > 1) && setNumber(number - 1);
 
   const onAdd = () => {
-    document.getElementById('standard-helperText').nextElementSibling.style ='none';
     const newObject = {
       product: product,
       number: number,
       id: id,
     };
-    if (product)  {
-      setProducts(prevArray => [...prevArray, newObject]);
-      setProduct('');
-      setNumber(1);
-      setId(id + 1);
-    } else {
-      alert("Введите наименования продукта!");
-      document.getElementById('standard-helperText').nextElementSibling.style.borderColor ='red';
-    };
+    product && setProducts([...products, newObject]) || setProduct('') || setNumber(1) || setId(id + 1);
   };
 
-  const onDelete = (id) => {
-    let productsChange = products.filter(item => item.id !== id);
-    setProducts(productsChange);
-  };
+  const onDelete = (id) => setProducts(products.filter(item => item.id !== id));
 
   return (
     <div className="App">
