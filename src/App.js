@@ -21,7 +21,11 @@ const App = () => {
       number: number,
       id: id,
     };
-    if (product) {setProducts([...products, newObject]); setProduct(''); setNumber(1); setId(id + 1)};
+    if (product) {
+      setProducts([...products, newObject]);
+      setProduct('');
+      setNumber(1);
+      setId(id + 1)};
   };
 
   const onDelete = (id) => setProducts(products.filter(item => item.id !== id));
